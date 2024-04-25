@@ -1,5 +1,3 @@
-package.com.mycompany.Advanced CP
-
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
