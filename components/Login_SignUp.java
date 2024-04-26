@@ -50,11 +50,12 @@ public static void SignUp(Scanner in){
     String password = in.nextLine();
     try{
         writefile(username,password);
+        System.out.println("Sign Up is Successful!");
+        readFile();
     }
     catch(IOException e){
         System.out.println("Error writing into file." + e.getMessage());
     }
-    System.out.println("Sign Up is Successful!");
 }
 
 public static void LogIn(Scanner in){
@@ -85,7 +86,6 @@ public static void writefile(String username,String password) throws IOException
         writer.write(username + "," + password);
         writer.newLine();
         writer.flush();
-        writer.close();
         }
 public static void readFile() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("D:\\Java\\Advanced CP\\src\\user_info.txt"));
