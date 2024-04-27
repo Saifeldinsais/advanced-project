@@ -5,16 +5,11 @@ import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Scanner;
 public class Login_SignUp {
-    private final String username;
-    private final String password;
-    static HashMap <String,String> userInfo = new HashMap<>();
-    public Login_SignUp (String username, String password){
-        this.username = username;
-        this.password = password;
-    }
 
+    static HashMap <String,String> userInfo = new HashMap<>();
 
 public static void SignUp(Scanner in){
+
     System.out.println("Please enter your first name: ");
     String first = in.nextLine();
     System.out.println("Please enter your last name: ");
@@ -46,12 +41,15 @@ public static void SignUp(Scanner in){
         System.out.println("A user with this username exists. Please enter another username: ");
         username = in.nextLine();
     }
+    User user = new User();
+    user.setUsername(username);
+
     System.out.println("Enter your password: ");
     String password = in.nextLine();
     try{
-        writefile(username,password);
+        File.writefile(first,last,birthDate,gender,username,password);
         System.out.println("Sign Up is Successful!");
-        readFile();
+        File.readFile();
     }
     catch(IOException e){
         System.out.println("Error writing into file." + e.getMessage());
@@ -60,7 +58,7 @@ public static void SignUp(Scanner in){
 
 public static void LogIn(Scanner in){
         try{
-            readFile();
+            File.readFile();
         }
         catch (IOException e){
             System.out.println("Error reading from file." + e.getMessage());
@@ -79,24 +77,5 @@ public static void LogIn(Scanner in){
         System.out.println("Invalid username or password. ");
         }
     }
+  }
 }
-
-public static void writefile(String username,String password) throws IOException {
-    BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Java\\Advanced CP\\src\\user_info.txt",true));
-        writer.write(username + "," + password);
-        writer.newLine();
-        writer.flush();
-        }
-public static void readFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Java\\Advanced CP\\src\\user_info.txt"));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    String username = parts[0];
-                    String password = parts[1];
-                    userInfo.put(username, password);
-                }
-            }
-        }
-    }
