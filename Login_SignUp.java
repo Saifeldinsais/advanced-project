@@ -1,3 +1,5 @@
+
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -41,9 +43,7 @@ public static void SignUp(Scanner in){
         System.out.println("A user with this username exists. Please enter another username: ");
         username = in.nextLine();
     }
-    User user = new User();
-    user.setUsername(username);
-
+    User user = new User(username);
     System.out.println("Enter your password: ");
     String password = in.nextLine();
     try{
