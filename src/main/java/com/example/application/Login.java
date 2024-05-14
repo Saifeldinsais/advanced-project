@@ -1,4 +1,4 @@
-package application;
+package com.example.application;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,7 +30,7 @@ public class Login implements Initializable {
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DB.changeScene(event, "/Signup.fxml","Sign Up!");
+                DB.changeScene(event, "/com/example/Signup.fxml","Sign Up!");
             }
         });
     }
