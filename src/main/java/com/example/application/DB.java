@@ -160,8 +160,8 @@ public static void save_bio(String newbio) {
         Connection connection = DriverManager.getConnection(url, username, password);
         String sql = "UPDATE users SET bio = ? WHERE UserName = ?";  // byktb elsql query
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(9, newbio);
-        preparedStatement.setString(5, SessionManager.getCurrentUser().getUsername()); // btet2kd mn elusername els7
+        preparedStatement.setString(1, newbio);
+        preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername()); // btet2kd mn elusername els7
         preparedStatement.executeUpdate();
         connection.close();
     } catch (SQLException e) {

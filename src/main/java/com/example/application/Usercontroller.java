@@ -1,7 +1,6 @@
 package com.example.application;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -10,15 +9,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class Usercontroller implements Initializable {
+    //@FXML
+   // private Button myposts_B, feed_B, friends_B, sign_out_B, chat_B;
     @FXML
-    private Button myposts_B, feed_B, friends_B, sign_out_B, chat,_B;
+    private Button change_pfp_B, bio_B;
     @FXML
     private Label bio_label, name_label, username_label;
     @FXML
@@ -37,7 +35,7 @@ public class Usercontroller implements Initializable {
             username_label.setText(currentUser.getUsername()); 
             bio_label.setText(currentUser.getBio()); 
             imagePath = currentUser.getPfpPath();
-            Image pfp = new Image(getClass().getResourceAsStream(imagePath));
+            Image pfp = new Image(imagePath);
             profilepic.setImage(pfp);
 
         }

@@ -68,7 +68,7 @@ public class User {
         return pfpPath;
     }
 
-    public void setPfpPath(String pfpPtah) {
+    public void setPfpPath(String pfpPath) {
         this.pfpPath = pfpPath;
     }
 
