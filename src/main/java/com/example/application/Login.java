@@ -24,7 +24,12 @@ public class Login implements Initializable {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DB.logInUser(event,tf_username.getText(),pf_password.getText());
+                String r =  DB.logInUser(event,tf_username.getText(),pf_password.getText());
+                System.out.println(r);
+                if (r.equals("1")) {
+                    System.out.println("---------------------------------------------------------------");
+                    DB.changeScene(event, "/com/example/User.fxml","Sign Up!");
+                }
             }
         });
         button_signup.setOnAction(new EventHandler<ActionEvent>() {

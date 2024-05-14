@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -30,7 +30,7 @@
                         <RowConstraints maxHeight="138.33335367838538" minHeight="10.0" prefHeight="118.99997965494788" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="189.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <ImageView fitHeight="119.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@../../assets/sign%20out.jpg" />
                            </image>
@@ -64,14 +64,14 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="861.0" prefWidth="899.0" style="-fx-background-color: #20263E;">
+            <AnchorPane prefHeight="868.0" prefWidth="1146.0" style="-fx-background-color: #20263E;">
                <children>
                   <Label fx:id="bio_label" layoutX="76.0" layoutY="174.0" prefHeight="191.0" prefWidth="561.0" text=" " textFill="WHITE">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="profilepic" fitHeight="256.0" fitWidth="222.0" layoutX="663.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profilepic" fitHeight="256.0" fitWidth="222.0" layoutX="671.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/Anonymous.png" />
                      </image>
@@ -86,27 +86,22 @@
                         <Font name="System Italic" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="myposts_B" layoutX="734.0" layoutY="434.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="My posts" textFill="WHITE">
+                  <Button fx:id="bio_B" layoutX="733.0" layoutY="364.0" mnemonicParsing="false" onAction="#change_Bio" style="-fx-background-color: transparent;" text="Update Bio!" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bio_B" layoutX="725.0" layoutY="365.0" mnemonicParsing="false" onAction="#change_Bio" style="-fx-background-color: transparent;" text="Update Bio!" textFill="WHITE">
+                  <Button fx:id="change_pfp_B" layoutX="725.0" layoutY="266.0" mnemonicParsing="false" onAction="#change_pfp" prefHeight="72.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="change my profile picture" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="change_pfp_B" layoutX="717.0" layoutY="270.0" mnemonicParsing="false" onAction="#change_pfp" prefHeight="72.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="change my profile picture" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <TextArea fx:id="bio_TF" layoutX="76.0" layoutY="193.0" prefHeight="171.0" prefWidth="537.0" visible="false" />
                   <Label fx:id="bio1" layoutX="14.0" layoutY="238.0" prefHeight="64.0" prefWidth="54.0" text="Bio:" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
+                  <TextField fx:id="bio_TF" layoutX="498.0" layoutY="434.0" prefHeight="72.0" prefWidth="369.0" />
                </children>
             </AnchorPane>
          </children>

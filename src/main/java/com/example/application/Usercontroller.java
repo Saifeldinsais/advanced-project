@@ -22,7 +22,7 @@ public class Usercontroller implements Initializable {
     @FXML
     private ImageView profilepic;
     @FXML
-    private TextArea bio_TF;
+    private TextField bio_TF;
 
     private String imagePath;
 
@@ -34,16 +34,21 @@ public class Usercontroller implements Initializable {
             name_label.setText(currentUser.getFirstName() + ' ' + currentUser.getLastName());
             username_label.setText(currentUser.getUsername()); 
             bio_label.setText(currentUser.getBio()); 
-            imagePath = currentUser.getPfpPath();
-            Image pfp = new Image(imagePath);
-            profilepic.setImage(pfp);
+            // imagePath = DB.getpfpPath_DB();
+            // System.out.println("----------------------------------------------------------------------");
+            // System.out.println(imagePath);
+            // System.out.println("---------------------------------------------------------------------------");
+            // Image pfp = new Image(imagePath);
+            // System.out.println(DB.getpfpPath_DB());
+            // System.out.println("---------------------------------------------------------------------------------");
+            // System.out.println("5");
+            // profilepic.setImage(pfp);
 
         }
     }
 
 
     public void change_Bio(ActionEvent event) {
-        bio_TF.setVisible(!bio_TF.isVisible()); //htwreena eltext area
         String newBio = bio_TF.getText();
         DB.save_bio(newBio); // y save elnew bio feldatabase
         User currentUser = SessionManager.getCurrentUser();
