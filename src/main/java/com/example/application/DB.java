@@ -300,7 +300,7 @@ public static void save_bio(String newBio) {
         }
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String sql = "INSERT INTO friends (UserName, FriendUserName) VALUES (?, ?)";
+            String sql = "INSERT INTO friends (UserName, FriendUserName, ) VALUES (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, UserName);
             preparedStatement.setString(2, friendUserName);
@@ -354,4 +354,42 @@ public static void save_bio(String newBio) {
 
         return friends;
     }
+
+    private static String loggedInUsername;
+
+    public static void setLoggedInUsername(String username){
+        loggedInUsername = username;
+    }
+    public static String getLoggedInUsername() {
+        return loggedInUsername;
+    }
+
+    public static void createPost (ActionEvent event, String content, String username) {
+	
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username_ = "root";
+        String password = "Tnsmt#2004";
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try {
+        connection = DriverManager.getConnection(url, username_, password);
+        preparedStatement = connection.prepareStatement("INSERT INTO posts (UserName,Content,PostDate) VALUES(?, ?, ?)");
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, content);
+        preparedStatement.setObject(3, LocalDate.now());
+        resultSet = preparedStatement.executeQuery();
+        connection.close();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Your post has been created successfully!");
+        }catch(SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error occured. Cannot create post!");
+        }
+    }
+
+    
 }
