@@ -61,7 +61,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="friends_B" layoutX="29.0" layoutY="305.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: transparent;" text="My Friends" textFill="#8f36ee" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                        <Button fx:id="friends_B" layoutX="29.0" layoutY="305.0" mnemonicParsing="false" onAction="#viewfriendslist" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: transparent;" text="My Friends" textFill="#8f36ee" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -76,7 +76,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="sign_out_B" layoutX="10.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: transparent;" text="Sign Out" textFill="#8f36ee" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                        <Button fx:id="sign_out_B" layoutX="10.0" layoutY="305.0" mnemonicParsing="false" onAction="#viewlogin" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: transparent;" text="Sign Out" textFill="#8f36ee" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>

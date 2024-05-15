@@ -155,4 +155,16 @@ public class ViewFeed implements Initializable {
         System.out.println("*********************");
         DB.changeScene(event, "/com/example/User.fxml", "My Profile");
     }
+
+    @FXML
+    private void viewfriendslist(ActionEvent event) {
+        System.out.println("*********************");
+        DB.changeScene(event, "/com/example/FriendsList.fxml", "Your Friends");
+    }
+
+    @FXML
+    private void viewlogin(ActionEvent event) {
+        System.out.println("*********************");
+        DB.changeScene(event, "/com/example/Login.fxml", "What's new");
+    }
 }

@@ -43,7 +43,7 @@
                         </ImageView>
                         <ImageView fitHeight="189.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <image>
-                              <Image url="@../../assets/feed.jpg" />
+                              <Image url="@../../assets/new.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="125.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -66,7 +66,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="feed_B" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Feed" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                        <Button fx:id="feed_B" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" onAction="#viewFeed" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Feed" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -76,7 +76,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="sign_out_B" layoutX="10.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Sign Out" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                        <Button fx:id="sign_out_B" layoutX="10.0" layoutY="622.0" mnemonicParsing="false" onAction="#viewlogin" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Sign Out" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
