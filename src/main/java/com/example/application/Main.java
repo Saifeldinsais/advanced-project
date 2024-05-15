@@ -20,3 +20,6 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
+//C:/Users/tamsa/Desktop/advanced project/New folder/demo/src/main/resources/assets

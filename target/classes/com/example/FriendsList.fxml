@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.Usercontrollefrr">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.FriendsList">
    <children>
       <HBox prefHeight="868.0" prefWidth="1034.0" style="-fx-background-color: black;">
          <children>
@@ -56,7 +56,7 @@
                               <Image url="@../../assets/user.jpg" />
                            </image>
                         </ImageView>
-                        <Button fx:id="user_B" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="User Profile" textAlignment="CENTER" textFill="#a846f0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <Button fx:id="user_B" mnemonicParsing="false" onAction="#viewUserProfile" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="User Profile" textAlignment="CENTER" textFill="#a846f0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -102,7 +102,7 @@
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="follow_B" layoutX="612.0" layoutY="161.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Follow" textFill="#a846f0">
+                  <Button fx:id="follow_B" layoutX="612.0" layoutY="161.0" mnemonicParsing="false" onAction="#Addfriend_button" style="-fx-background-color: black;" text="Follow" textFill="#a846f0">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>

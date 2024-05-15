@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FriendsList {
-    
+
     @FXML
     private Label bio_label;
 
@@ -94,7 +94,11 @@ public class FriendsList {
     }
 
 
-    
+    @FXML
+    private void viewUserProfile(ActionEvent event){
+        System.out.println("*********************");
+        DB.changeScene(event, "/com/example/User.fxml", "My Profile");
+    }
 
     
 }

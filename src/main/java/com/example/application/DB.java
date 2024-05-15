@@ -198,28 +198,9 @@ public class DB {
 
         return user;
     }
-//saif's User database connection----------------------------------------------------------------------------------------------------------------------------
+//saif's database connection----------------------------------------------------------------------------------------------------------------------------
 
-// public static void save_bio(String newbio) {
-    
-//     String url = "jdbc:mysql://localhost:3306/userinfo";
-//     String username = "root";
-//     String password = "Tnsmt#2004";
-    
 
-//     try {
-        
-//         Connection connection = DriverManager.getConnection(url, username, password);
-//         String sql = "UPDATE users SET bio = ? WHERE UserName = ?";  // byktb elsql query
-//         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//         preparedStatement.setString(1, newbio);
-//         preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername()); // btet2kd mn elusername els7
-//         preparedStatement.executeUpdate();
-//         connection.close();
-//     } catch (SQLException e) {
-//         e.printStackTrace();
-//     }
-// }
     
 
 public static void save_bio(String newBio) {
