@@ -149,4 +149,10 @@ public class ViewFeed implements Initializable {
 
         });
     }
+
+    @FXML
+    private void viewUserProfile(ActionEvent event){
+        System.out.println("*********************");
+        DB.changeScene(event, "/com/example/User.fxml", "My Profile");
+    }
 }

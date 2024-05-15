@@ -115,7 +115,10 @@ public class DB {
                     String retrievedPassword = resultSet.getString("Password");
                     if (retrievedPassword.equals(Password)) {
                         System.out.println("User logged in successfully!");
-                        SessionManager.setCurrentUser(new User(resultSet.getString("Firstname"), resultSet.getString("LastName"), UserName));
+                        User user = new User(resultSet.getString("Firstname"), resultSet.getString("LastName"), UserName);
+                        user.setBio(resultSet.getString("bio"));
+                        SessionManager.setCurrentUser(user);
+                        SessionManager.getCurrentUser().setPfpPath(resultSet.getString("pfp"));
                         //changeScene(event, "com/example/User.fxml","User Profile!");
                         checker = 1;
                     }
@@ -244,8 +247,9 @@ public class DB {
         try (Connection connection = DriverManager.getConnection(url, username_, password)) {
             String sql = "UPDATE users SET pfp = ? WHERE UserName = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
             FileInputStream fis = new FileInputStream(pfpFile);
-            preparedStatement.setBinaryStream(1, fis, (int) pfpFile.length());
+            preparedStatement.setString(1, pfpFile.getAbsolutePath().replace("\\", "/"));
             preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername());
             preparedStatement.executeUpdate();
             connection.close();
