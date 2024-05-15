@@ -1,65 +1,46 @@
-
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-
+package application;
 
 public class Post {
-    private final User author;
-    private Object content;
-    private ArrayList <Comment> comments;
-    private ArrayList <Likes> likes;
-    
-    public Post(User author, Object content){
-        this.author= author;
-        this.content = content;
-        this.comments= new ArrayList<>();
-        this.likes= new ArrayList<>();
-    }
-    
-    public void setContent(Object content){
-        this.content=content;
-    }
-    
-    public void addImage(BufferedImage image){
-        this.content=image;
-    }
-    
-     public User getAuthor(){
-         return author;
-     }
-             
-     public void editContent(Object newContent){
-         this.content= newContent;
-     }
-         
-       public void deleteContent(){
-           this.content= null;
-           this.comments.clear();
-           this.likes.clear();
-       }   
-     
-     public ArrayList<Comment> getComments(){
-         return comments;
-     }
-     
-     public ArrayList<Likes> getLikes(){
-         return likes;
-     }
-     
-     public void addComment (Comment comment){
-         comments.add(comment);
-     }
-     
-      public void removeComment (Comment comment){
-         comments.remove(comment);
-     }
-      
-      public void addlike(Likes like){
-          likes.add(like);
-      }
+    private int post_Id;
+    private int user_id;
+    private String content;
+    private int like_Count;
 
-      public void unLike(Likes like) {
-          likes.remove(like);
-      }
-  
+    public Post(int post_Id, int user_id, String content, int like_Count) {
+        this.post_Id = post_Id;
+        this.user_id = user_id;
+        this.content = content;
+        this.like_Count = like_Count;
+    }
+
+    public int getPostId() {
+        return post_Id;
+    }
+
+    public int getUserId() {
+        return user_id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setPostId(int postId) {
+        this.post_Id = postId;
+    }
+
+    public void setUserId(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public int getLikesCount() {
+        return like_Count;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.like_Count = likesCount;
+    }
 }

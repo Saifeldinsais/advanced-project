@@ -1,4 +1,4 @@
-package application;
+package com.example.application;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,13 +24,19 @@ public class Login implements Initializable {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DB.logInUser(event,tf_username.getText(),pf_password.getText());
+                boolean r =  DB.logInUser(event,tf_username.getText(),pf_password.getText());
+                System.out.println(r);
+                if (r) {
+                    DB.setLoggedInUsername(tf_username.getText());
+                    System.out.println("---------------------------------------------------------------");
+                    DB.changeScene(event, "/com/example/Feed.fxml","Sign Up!");
+                }
             }
         });
         button_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DB.changeScene(event, "/Signup.fxml","Sign Up!");
+                DB.changeScene(event, "/com/example/Signup.fxml","Sign Up!");
             }
         });
     }
