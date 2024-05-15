@@ -55,27 +55,27 @@
                               <Image url="@../../assets/user.jpg" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="User Profile" textAlignment="CENTER" textFill="#a846f0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <Button fx:id="user_B" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="User Profile" textAlignment="CENTER" textFill="#a846f0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="119.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Friends" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                        <Button fx:id="friends_B" layoutX="10.0" layoutY="119.0" mnemonicParsing="false" onAction="#viewfriendslist" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Friends" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Feed" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                        <Button fx:id="feed_B" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Feed" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Chats" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                        <Button fx:id="chat_B" layoutX="10.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Chats" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Sign Out" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                        <Button fx:id="sign_out_B" layoutX="10.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Sign Out" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>

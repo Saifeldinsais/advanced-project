@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 public class User {
+    private int ID;
     private String first;
     private String last;
     private String username;
@@ -14,7 +15,8 @@ public class User {
     private ArrayList<String> friendlist = new ArrayList<String>();
 
 
-    public User(String first, String last, String username, String bio, String pfpPath) {
+    public User(int ID,String first, String last, String username, String bio, String pfpPath) {
+        this.ID = ID;
         this.first = first;
         this.last = last;
         this.username = username;
@@ -30,7 +32,13 @@ public class User {
     }
     
 
+    public int getID() {
+        return ID;
+    }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public String getFirstName() {
         return first;

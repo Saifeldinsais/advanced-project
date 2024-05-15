@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.Usercontroller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.Usercontrollefrr">
    <children>
       <HBox prefHeight="868.0" prefWidth="1034.0" style="-fx-background-color: black;">
          <children>
@@ -55,27 +56,27 @@
                               <Image url="@../../assets/user.jpg" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="User Profile" textAlignment="CENTER" textFill="#a846f0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <Button fx:id="user_B" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="User Profile" textAlignment="CENTER" textFill="#a846f0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="119.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Friends" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                        <Button fx:id="friends_B" layoutX="10.0" layoutY="119.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Friends" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Feed" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                        <Button fx:id="feed_B" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Feed" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Chats" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                        <Button fx:id="chat_B" layoutX="10.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Chats" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Sign Out" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                        <Button fx:id="sign_out_B" layoutX="10.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Sign Out" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -91,45 +92,37 @@
             </AnchorPane>
             <AnchorPane prefHeight="868.0" prefWidth="1146.0" style="-fx-background-color: #20263E;">
                <children>
-                  <ImageView fx:id="profilepic" fitHeight="256.0" fitWidth="222.0" layoutX="671.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/Anonymous.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="name_label" layoutX="14.0" layoutY="14.0" prefHeight="72.0" prefWidth="623.0" text="Label:" textFill="WHITE">
+                  <Label fx:id="name_label" layoutX="14.0" layoutY="89.0" prefHeight="72.0" prefWidth="623.0" text="Enter the Username of you friend:" textFill="WHITE">
                      <font>
-                        <Font name="Arial Bold" size="24.0" />
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="username_label" layoutX="14.0" layoutY="118.0" prefHeight="45.0" prefWidth="623.0" text="Label" textFill="WHITE">
-                     <font>
-                        <Font name="System Italic" size="16.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="bio_B" layoutX="733.0" layoutY="364.0" mnemonicParsing="false" onAction="#change_Bio" style="-fx-background-color: transparent;" text="Update Bio!" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="change_pfp_B" layoutX="725.0" layoutY="266.0" mnemonicParsing="false" onAction="#change_pfp" prefHeight="72.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="change my profile picture" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="Arial Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="bio1" layoutX="14.0" layoutY="238.0" prefHeight="64.0" prefWidth="54.0" text="Bio:" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="bio_TF" layoutX="498.0" layoutY="434.0" prefHeight="72.0" prefWidth="369.0" />
                   <Label fx:id="bio_label" layoutX="76.0" layoutY="174.0" prefHeight="191.0" prefWidth="561.0" text=" " textFill="WHITE">
                      <font>
                         <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="follow_B" layoutX="612.0" layoutY="161.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Follow" textFill="#a846f0">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="search_TF" layoutX="14.0" layoutY="157.0" prefHeight="37.0" prefWidth="571.0" />
+                  <TextArea fx:id="yourlist_TF" layoutX="14.0" layoutY="296.0" prefHeight="472.0" prefWidth="451.0" />
+                  <Label fx:id="name_label1" layoutX="14.0" layoutY="224.0" prefHeight="72.0" prefWidth="623.0" text="Your following list:" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="message_label" layoutX="554.0" layoutY="224.0" prefHeight="72.0" prefWidth="323.0" text="Enter the Username of you friend:" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
          </children>
       </HBox>
+      <Label layoutX="-49.0" layoutY="656.0" text="Label" />
    </children>
 </AnchorPane>

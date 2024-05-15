@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DB {
 
@@ -146,11 +148,21 @@ public class DB {
         try{
             System.out.println(fxmlfile);
             System.out.println(DB.class.getResource(fxmlfile));
+            System.out.println("---------------------------------------------------------------");
+            System.out.println(root);
+            System.out.println("---------------------------------------------------------------");
+            
             root = FXMLLoader.load(DB.class.getResource(fxmlfile));
+
+            System.out.println("---------------------------------------------------------------");
+            System.out.println(root);
+            System.out.println("---------------------------------------------------------------");
 
         } catch (IOException e){
         	e.printStackTrace();
         }
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("3");
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         System.out.println("4");
         stage.setTitle(title);
@@ -158,7 +170,34 @@ public class DB {
         stage.show();
     }
 
+    public static User fetchUserInformation(String UserName) {
+        User user = null;
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username = "root";
+        String password = "Tnsmt#2004";
 
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "SELECT * FROM users WHERE UserName = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int userID = resultSet.getInt("ID"); // Retrieve user_id from the result set
+                String usernamee = resultSet.getString("UserName");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                String bio = resultSet.getString("bio");
+                String pfp = resultSet.getString("pfp");
+
+                user = new User(userID,firstName, lastName, usernamee, bio,pfp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
 //saif's User database connection----------------------------------------------------------------------------------------------------------------------------
 
 // public static void save_bio(String newbio) {
@@ -248,5 +287,90 @@ public static void save_bio(String newBio) {
             e.printStackTrace();
         }
         return image;
+    }
+
+
+    public static String findUsername(String UserName){
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username = "root";
+        String password = "Tnsmt#2004";
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "SELECT UserName FROM users WHERE UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, UserName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getString("UserName");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "-1";
+    }
+
+    public static boolean addFriend(String UserName, String friendUserName){
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username = "root";
+        String password = "Tnsmt#2004";
+
+        if (isFriend(UserName, friendUserName)) {
+            return false; // Already friends
+        }
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "INSERT INTO friends (UserName, FriendUserName) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, UserName);
+            preparedStatement.setString(2, friendUserName);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public static boolean isFriend(String UserName, String friendUserName) {
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username = "root";
+        String password = "Tnsmt#2004";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "SELECT * FROM friends WHERE UserName = ? AND FriendUserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, UserName);
+            preparedStatement.setString(2, friendUserName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static List<String> getFriends(String UserName) {
+        List<String> friends = new ArrayList<>();
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username = "root";
+        String password = "Tnsmt#2004";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "SELECT u.UserName FROM friends f JOIN users u ON f.FriendUserName = u.UserName WHERE f.UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, UserName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                friends.add(resultSet.getString("username"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return friends;
     }
 }

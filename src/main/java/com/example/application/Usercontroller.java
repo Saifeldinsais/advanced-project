@@ -13,8 +13,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Usercontroller implements Initializable {
-    //@FXML
-   // private Button myposts_B, feed_B, friends_B, sign_out_B, chat_B;
+    @FXML
+    private Button  user_B, feed_B, friends_B, sign_out_B, chat_B;
     @FXML
     public Button change_pfp_B, bio_B;
     @FXML
@@ -78,19 +78,9 @@ public class Usercontroller implements Initializable {
         }
     }
 
-    // @FXML
-    // public void change_pfp(ActionEvent event) {
-    //     FileChooser fileChooser = new FileChooser();
-    //     fileChooser.getExtensionFilters().addAll(
-    //             new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", "*.gif")
-    //     );
-    //     File selectedFile = fileChooser.showOpenDialog(new Stage());
-
-    //     if (selectedFile != null) {
-    //         String pfpPath = selectedFile.getAbsolutePath().replace("\\", "/");
-    //         DB.save_pfp_path(pfpPath);
-    //         Image image = new Image(selectedFile.toURI().toString());
-    //         profilepic.setImage(image);
-    //     }
-    // }
+    @FXML
+    private void viewfriendslist(ActionEvent event){
+        System.out.println("*********************");
+        DB.changeScene(event, "/com/example/FriendsList.fxml", "Your Friends");
+    }
 }
