@@ -1,29 +1,53 @@
+package application;
+
 import java.util.ArrayList;
 
 
-
-/**
- *
- * @author tamsa
- */
 public class User {
+    private String first;
+    private String last;
     private String username;
     private String bio;
     private String pfpPath;
+    private int ID;
     private ArrayList<String> friendlist = new ArrayList<String>();
 
 
-    public User(String username, String bio, String pfpPath) {
+    public User(int ID,String first, String last, String username, String bio, String pfpPath) {
+    	this.ID = ID;
+        this.first = first;
+        this.last = last;
         this.username = username;
         this.bio = bio;
         this.pfpPath = pfpPath;
         this.friendlist = new ArrayList<>();
     }
     
-    public User(String username){
+    public User(String first, String last,String username){
+        this.first = first;
+        this.last = last;
         this.username = username;
     }
     
+
+
+
+    public String getFirstName() {
+        return first;
+    }
+
+    public void editFirstName(String first) {
+        this.first = first;
+    }
+
+    public String getLastName() {
+        return last;
+    }
+
+    public void editLastName(String last) {
+        this.last = last;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -39,14 +63,19 @@ public class User {
     public void setBio(String bio) {
         this.bio = bio;
     }
+    
+    public void setPfpPath(String pfpPath) {
+        this.pfpPath = pfpPath;
+    }
 
     public String getPfpPath() {
         return pfpPath;
     }
-
-    public void setPfpPath(String pfpPtah) {
-        this.pfpPath = pfpPath;
+    
+    public int getID(){
+    	return ID;
     }
+
 
    public void addfriend(String name){
        friendlist.add(name);
@@ -54,24 +83,5 @@ public class User {
    
    public void removefriend(String name){
        friendlist.remove(name);
-   }
-
-    
-   public void displayfriendslist(){
-       if(friendlist.isEmpty()){
-           System.out.println("User has no friends yet!");
-       }else{
-            
-                System.out.println(friendlist);
-            
-       }
-   }
-   
-   public void displayUserProfile(){
-       System.out.println("name: " + this.getUsername());
-       System.out.println("bio: " + this.getBio());
-       System.out.println(pfpPath);
-       System.out.println("--------------------");
-   
    }
 }

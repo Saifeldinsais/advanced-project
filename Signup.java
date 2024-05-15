@@ -35,6 +35,7 @@ public class Signup implements Initializable {
                 LocalDate birtdate = date_birthdate.getValue();
                 if(!tf_firstname.getText().isEmpty() && !tf_lastname.getText().isEmpty() && !toggleName.isEmpty() && !tf_username.getText().isEmpty() && !pf_password.getText().isEmpty()){
                         DB.signUpUser(event, tf_firstname.getText(), tf_lastname.getText(), birtdate, toggleName, tf_username.getText(), pf_password.getText());
+                        DB.changeScene(event, "/Login.fxml","Log In!");
                 } else {
                     System.out.println("Please fill in all information!");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
