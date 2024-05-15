@@ -32,7 +32,7 @@
                      <children>
                         <ImageView fitHeight="119.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <image>
-                              <Image url="@../../assets/sign%20out.jpg" />
+                              <Image url="@../../assets/sign out.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="109.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
@@ -55,6 +55,31 @@
                               <Image url="@../../assets/user.jpg" />
                            </image>
                         </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="User Profile" textAlignment="CENTER" textFill="#a846f0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="119.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Friends" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Feed" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Chats" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="622.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: black;" text="Sign Out" textAlignment="CENTER" textFill="#a846f0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </GridPane>
                   <ImageView fitHeight="121.0" fitWidth="90.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -66,11 +91,6 @@
             </AnchorPane>
             <AnchorPane prefHeight="868.0" prefWidth="1146.0" style="-fx-background-color: #20263E;">
                <children>
-                  <Label fx:id="bio_label" layoutX="76.0" layoutY="174.0" prefHeight="191.0" prefWidth="561.0" text=" " textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Label>
                   <ImageView fx:id="profilepic" fitHeight="256.0" fitWidth="222.0" layoutX="671.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../assets/Anonymous.png" />
@@ -102,6 +122,11 @@
                      </font>
                   </Label>
                   <TextField fx:id="bio_TF" layoutX="498.0" layoutY="434.0" prefHeight="72.0" prefWidth="369.0" />
+                  <Label fx:id="bio_label" layoutX="76.0" layoutY="174.0" prefHeight="191.0" prefWidth="561.0" text=" " textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

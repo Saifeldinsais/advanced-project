@@ -5,9 +5,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -156,64 +161,92 @@ public class DB {
 
 //saif's User database connection----------------------------------------------------------------------------------------------------------------------------
 
-public static void save_bio(String newbio) {
+// public static void save_bio(String newbio) {
     
-    String url = "jdbc:mysql://localhost:3306/userinfo";
-    String username = "root";
-    String password = "Tnsmt#2004";
+//     String url = "jdbc:mysql://localhost:3306/userinfo";
+//     String username = "root";
+//     String password = "Tnsmt#2004";
+    
 
-    try {
+//     try {
         
-        Connection connection = DriverManager.getConnection(url, username, password);
-        String sql = "UPDATE users SET bio = ? WHERE UserName = ?";  // byktb elsql query
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, newbio);
-        preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername()); // btet2kd mn elusername els7
-        preparedStatement.executeUpdate();
-        connection.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
+//         Connection connection = DriverManager.getConnection(url, username, password);
+//         String sql = "UPDATE users SET bio = ? WHERE UserName = ?";  // byktb elsql query
+//         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//         preparedStatement.setString(1, newbio);
+//         preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername()); // btet2kd mn elusername els7
+//         preparedStatement.executeUpdate();
+//         connection.close();
+//     } catch (SQLException e) {
+//         e.printStackTrace();
+//     }
+// }
     
-public static void save_pfp_path(String newPfpPath){
 
-    String url = "jdbc:mysql://localhost:3306/userinfo";
-    String username = "root";
-    String password = "Tnsmt#2004";   
-
-    try {
-        Connection connection = DriverManager.getConnection(url, username, password);
-        String sql = "UPDATE users SET pfp = ? WHERE UserName = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, newPfpPath);
-        preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername());
-        preparedStatement.executeUpdate();
-        connection.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
-
-
-public static String getpfpPath_DB(){
+public static void save_bio(String newBio) {
     String url = "jdbc:mysql://localhost:3306/userinfo";
     String username = "root";
     String password = "Tnsmt#2004";
 
-    try {
-        Connection connection = DriverManager.getConnection(url, username, password);
-        String sql = "SELECT pfp FROM users WHERE UserName = ?";
+    try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        String sql = "UPDATE users SET bio = ? WHERE UserName = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, SessionManager.getCurrentUser().getUsername());
-        ResultSet resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            return resultSet.getString("pfp");
+        preparedStatement.setString(1, newBio);
+        preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername());
+        int rowsUpdated = preparedStatement.executeUpdate();
+        if (rowsUpdated > 0) {
+            System.out.println("Bio updated successfully in database.");
+        } else {
+            System.out.println("Failed to update bio in database.");
         }
-        connection.close();
     } catch (SQLException e) {
         e.printStackTrace();
     }
-    return null;
 }
+
+
+
+ public static void save_pfp(File pfpFile) {
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username = "root";
+        String password = "Tnsmt#2004";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "UPDATE users SET pfp = ? WHERE UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            FileInputStream fis = new FileInputStream(pfpFile);
+            preparedStatement.setBinaryStream(1, fis, (int) pfpFile.length());
+            preparedStatement.setString(2, SessionManager.getCurrentUser().getUsername());
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (SQLException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+ public static Image getpfp() {
+        String url = "jdbc:mysql://localhost:3306/userinfo";
+        String username = "root";
+        String password = "Tnsmt#2004";
+        Image image = null;
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String sql = "SELECT pfp FROM users WHERE UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, SessionManager.getCurrentUser().getUsername());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                InputStream is = resultSet.getBinaryStream("pfp");
+                if (is != null) {
+                    image = new Image(is);
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return image;
+    }
 }

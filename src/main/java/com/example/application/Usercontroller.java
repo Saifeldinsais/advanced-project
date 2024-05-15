@@ -16,7 +16,7 @@ public class Usercontroller implements Initializable {
     //@FXML
    // private Button myposts_B, feed_B, friends_B, sign_out_B, chat_B;
     @FXML
-    private Button change_pfp_B, bio_B;
+    public Button change_pfp_B, bio_B;
     @FXML
     private Label bio_label, name_label, username_label;
     @FXML
@@ -32,20 +32,24 @@ public class Usercontroller implements Initializable {
 
         if (currentUser != null) {
             name_label.setText(currentUser.getFirstName() + ' ' + currentUser.getLastName());
-            username_label.setText(currentUser.getUsername()); 
-            bio_label.setText(currentUser.getBio()); 
-            // imagePath = DB.getpfpPath_DB();
-            // System.out.println("----------------------------------------------------------------------");
-            // System.out.println(imagePath);
-            // System.out.println("---------------------------------------------------------------------------");
-            // Image pfp = new Image(imagePath);
-            // System.out.println(DB.getpfpPath_DB());
-            // System.out.println("---------------------------------------------------------------------------------");
-            // System.out.println("5");
-            // profilepic.setImage(pfp);
+            username_label.setText(currentUser.getUsername());
+            bio_label.setText(currentUser.getBio());
 
+            Image image = DB.getpfp();
+            if (image != null) {
+                profilepic.setImage(image);
+            }
         }
     }
+
+
+    // public void initialize(URL location, ResourceBundle resources) {
+    //     User currentUser = SessionManager.getCurrentUser();
+
+    //     if (currentUser != null) {
+    //         name_label.setText(currentUser.getFirstName() + ' ' + currentUser.getLastName());
+    //         username_label.setText(currentUser.getUsername()); 
+    //         bio_label.setText(currentUser.getBio());
 
 
     public void change_Bio(ActionEvent event) {
@@ -54,21 +58,39 @@ public class Usercontroller implements Initializable {
         User currentUser = SessionManager.getCurrentUser();
         if (currentUser != null) {
             currentUser.setBio(newBio); //load new bio
+            bio_label.setText(newBio);  // Update the bio label in the GUI
+            System.out.println("Bio updated in GUI and database."); // Debug statement
         }
     }
 
-     public void change_pfp(ActionEvent event) {
+    @FXML
+    public void change_pfp(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif") //elmfrood y5tar file format mn dol
+                new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", "*.gif")
         );
         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         if (selectedFile != null) {
-            String pfpPath = selectedFile.getAbsolutePath().replace("\\", "/"); //htgeeb elpath bta3 elselected file
-            DB.save_pfp_path(pfpPath);
+            DB.save_pfp(selectedFile);
             Image image = new Image(selectedFile.toURI().toString());
-            profilepic.setImage(image); //ht3ml show lelimage elgdeeda
+            profilepic.setImage(image); // Update the profile picture in the GUI
         }
     }
+
+    // @FXML
+    // public void change_pfp(ActionEvent event) {
+    //     FileChooser fileChooser = new FileChooser();
+    //     fileChooser.getExtensionFilters().addAll(
+    //             new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", "*.gif")
+    //     );
+    //     File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+    //     if (selectedFile != null) {
+    //         String pfpPath = selectedFile.getAbsolutePath().replace("\\", "/");
+    //         DB.save_pfp_path(pfpPath);
+    //         Image image = new Image(selectedFile.toURI().toString());
+    //         profilepic.setImage(image);
+    //     }
+    // }
 }
