@@ -30,31 +30,6 @@ public class ViewFeed implements Initializable {
     private int currentPost;
     private int userId;
 
-    private void display(Post post) {
-        String userName = DB.getLoggedInUsername();
-        System.out.println("Author: " + userName); // Debug statement
-        Image pfp = DB.getPfp(post.getUserId());
-        int likeCount = DB.getLikes(post.getPostId());
-
-        label_username.setText(userName);
-        label_content.setText(post.getContent());
-        iv_pfp.setImage(pfp);
-        label_likecount.setText(String.valueOf(likeCount));
-
-        if (DB.isPostLiked(userId, post.getPostId())) {
-            button_like.setText("Unlike");
-            button_like.setStyle("-fx-background-color: red;");
-        } else {
-            button_like.setText("Like");
-            button_like.setStyle("-fx-background-color: transparent;");
-        }
-
-        List<String> comments = DB.getComments(post.getPostId());
-        ta_addcomment.clear();
-        for (String comment : comments) {
-            ta_addcomment.appendText(comment + "\n");
-        }
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,6 +53,8 @@ public class ViewFeed implements Initializable {
         currentPost = 0;
         
         if (!posts.isEmpty()) {
+            System.out.println("////////////////////////////////////////////////////////////////////////////////////////////////////");
+            System.out.println(posts.get(currentPost));
             display(posts.get(currentPost));
         }
 
@@ -148,6 +125,33 @@ public class ViewFeed implements Initializable {
 			}
 
         });
+    }
+
+    
+    private void display(Post post) {
+        String userName = DB.getLoggedInUsername();
+        System.out.println("Author: " + userName); // Debug statement
+        // Image pfp = DB.getPfp(post.getUserId());
+        //int likeCount = DB.getLikes(post.getPostId());
+
+        label_username.setText(userName);
+        label_content.setText(post.getContent());
+        //iv_pfp.setImage(pfp);
+        //label_likecount.setText(String.valueOf(likeCount));
+
+        if (DB.isPostLiked(userId, post.getPostId())) {
+            button_like.setText("Unlike");
+            button_like.setStyle("-fx-background-color: red;");
+        } else {
+            button_like.setText("Like");
+            button_like.setStyle("-fx-background-color: transparent;");
+        }
+
+        List<String> comments = DB.getComments(post.getPostId());
+        ta_addcomment.clear();
+        for (String comment : comments) {
+            ta_addcomment.appendText(comment + "\n");
+        }
     }
 
     @FXML

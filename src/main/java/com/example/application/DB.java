@@ -411,7 +411,7 @@ public static List<Post> getPosts(){
         resultSet = preparedStatement.executeQuery();
         
         while (resultSet.next()) {
-        	int ID = resultSet.getInt("ID");
+        	int  ID = resultSet.getInt("ID");
         	int PostID = resultSet.getInt("PostID");
         	String content = resultSet.getString("Content");
         	int Like_Count = resultSet.getInt("Like_Count");

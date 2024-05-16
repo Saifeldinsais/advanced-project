@@ -28,7 +28,6 @@ public class Login implements Initializable {
                 System.out.println(r);
                 if (r) {
                     DB.setLoggedInUsername(tf_username.getText());
-                    System.out.println("---------------------------------------------------------------");
                     DB.changeScene(event, "/com/example/Feed.fxml","Sign Up!");
                 }
             }
