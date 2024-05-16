@@ -43,6 +43,7 @@ public class ViewFeed implements Initializable {
 				} else {
 					Alert alert = new Alert(Alert.AlertType.ERROR);
 					alert.setContentText("Please enter content to create post!");
+                    System.out.println("+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_");
 				}
 				
 			}
