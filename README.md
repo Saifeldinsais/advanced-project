@@ -1,7 +1,7 @@
 How To Run Code:
 (1) any IDE can be used ex: Eclipse,Netbeans,Intellij etc....
 (2) download mySQL application and its JAR file.
-(3) crete a new local database with a username and a password
+(3) create a new local database with a username and a password
 (4) import the mysql file in the github folder called "userinfo" and import it inside the database, server------> import
 (5) refresh mySQL
 (6) open the folder in IDE.
